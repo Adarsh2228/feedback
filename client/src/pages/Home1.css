@@ -1,0 +1,62 @@
+/* Home1.css */
+.home-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-quote-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 20px 0;
+  transition: padding 0.3s;
+}
+
+.image-quote-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.image-box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 50%;
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quote-box {
+  flex: 1;
+  max-width: 50%;
+  padding: 20px;
+  text-align: left;
+  font-size: 1.2em;
+  background-color: #f083f1;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+  }
+}
