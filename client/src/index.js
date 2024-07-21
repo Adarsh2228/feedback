@@ -11,5 +11,5 @@ ReactDOM.render(
             <App />
         </Provider>
     </React.StrictMode>,
-    document.getElementById('root') // Ensure this matches your HTML element ID
+    document.getElementById('root')
 );
