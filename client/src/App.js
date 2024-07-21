@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import Home from './pages/Home';
-import HomePage1 from './pages/Home1'; // Ensure this matches your file structure
+import HomePage1 from './pages/Home1';
 import Details from './pages/Details';
 import NewFeedback from './pages/NewFeedback';
 import EditFeedback from './pages/EditFeedback';
 import RoadMap from './pages/RoadMap';
-import Navbar from './pages/Navbar'; // Adjust path if necessary
+import Navbar from './pages/Navbar'; // Corrected path
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import SettingPage from './pages/SettingPage';
