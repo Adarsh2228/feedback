@@ -24,7 +24,9 @@ mongoose.connect(mongoURI, {
 
 // Routers
 const authRouter = require('./router/auth.router');
+const adminRouter = require('./router/admin.router');
 app.use('/api/auth', authRouter);
+app.use('/api/admin', adminRouter);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

@@ -51,7 +51,7 @@ const HomePage1 = () => {
           key={index}
         >
           <div className="image-box">
-            <img src={image} alt={`Quote image ${index + 1}`} />
+            <img src={image} alt={`Feedback related image ${index + 1}`} /> {/* Updated alt text */}
           </div>
           <div className="quote-box">
             {quotes[index] ? (

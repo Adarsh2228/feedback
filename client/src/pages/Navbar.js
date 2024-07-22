@@ -2,17 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = ({ isLoggedIn, username, onLogout }) => {
+const Navbar = ({ isLoggedIn, username, isAdmin, onLogout }) => {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = () => {
-    // Clear token from local storage or cookies
     localStorage.removeItem('token');
     localStorage.removeItem('username');
-    // Perform any additional cleanup (e.g., reset state)
+    localStorage.removeItem('isAdmin');
     onLogout();
-    // Redirect to home page
     navigate('/');
   };
 
@@ -23,6 +21,10 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
   const handleSettingsClick = () => {
     navigate('/settings');
     toggleDropdown();
+  };
+
+  const handleAdminClick = () => {
+    navigate('/admin');
   };
 
   return (
@@ -44,6 +46,11 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
             </button>
             {isDropdownOpen && (
               <div className="navbar-dropdown-content">
+                {isAdmin && (
+                  <button className="shadow__btn" onClick={handleAdminClick}>
+                    Admin
+                  </button>
+                )}
                 <button className="shadow__btn" onClick={handleSettingsClick}>
                   Settings
                 </button>
@@ -60,6 +67,9 @@ const Navbar = ({ isLoggedIn, username, onLogout }) => {
             </Link>
             <Link to="/register" className="navbar-link navbar-auth-link">
               Register
+            </Link>
+            <Link to="/admin" className="navbar-link navbar-auth-link">
+              Admin
             </Link>
           </>
         )}

@@ -1,0 +1,92 @@
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  transition: width 0.3s;
+  background-color: #2c3e50;
+  color: white;
+  height: calc(100vh - 60px); /* Adjust the height considering the Navbar height */
+  position: fixed;
+  top: 60px; /* Height of the Navbar */
+  overflow: auto;
+}
+
+.sidebar.closed {
+  width: 60px;
+}
+
+.sidebar-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.sidebar-header h2 {
+  font-size: 24px; /* Adjust this value to your desired font size */
+  margin: 0; /* Remove default margin for better alignment */
+  color: white; /* Ensure the text color is white for visibility */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li a:hover {
+  background-color: #34495e;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a svg {
+  margin-right: 10px;
+}
+
+.sidebar-toggle-btn {
+  position: absolute; /* Position it within the sidebar */
+  top: 15px; /* Align with the top of the sidebar */
+  left: 15px; /* Small margin from the left */
+  cursor: pointer;
+  z-index: 1000; /* Ensure it's above other elements */
+  font-size: 20px;
+  color: white; /* Change to white for visibility */
+}
+
+.sidebar-toggle-btn:hover {
+  color: #34495e; /* Change color on hover */
+  transition: color 0.3s;
+}
+
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  transition: margin-left 0.3s;
+  width: calc(100% - 250px);
+  margin-top: 60px; /* Align with the Navbar */
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.main-content.sidebar-closed {
+  margin-left: 60px;
+  width: calc(100% - 60px);
+}

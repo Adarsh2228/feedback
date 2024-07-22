@@ -1,22 +1,13 @@
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user-model');
-const bcrypt = require('bcryptjs');
-const { comparePasswords, generateToken } = require('../utils/helpers');
 
-// Register a new user
-const register = async (req, res) => {
+exports.register = async (req, res) => {
+  const { username, email, phone, password } = req.body;
   try {
-    const { username, email, phone, password } = req.body;
-
-    // Check if the user already exists
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'User already exists' });
-    }
-
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ username, email, phone, password: hashedPassword });
     await newUser.save();
-
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error('Error registering user:', error);
@@ -24,29 +15,21 @@ const register = async (req, res) => {
   }
 };
 
-// Login existing user
-const login = async (req, res) => {
+exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
-
-    const isValid = await comparePasswords(password, user.password);
-    if (!isValid) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({ message: 'Invalid email or password' });
     }
-
-    const token = generateToken(user._id);
-    res.json({ token, username: user.username });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.status(200).json({ token, username: user.username });
   } catch (error) {
     console.error('Error logging in:', error);
     res.status(500).json({ message: 'Error logging in' });
   }
-};
-
-module.exports = {
-  register,
-  login,
 };
