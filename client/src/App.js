@@ -7,11 +7,9 @@ import Details from './pages/Details';
 import NewFeedback from './pages/NewFeedback';
 import EditFeedback from './pages/EditFeedback';
 import RoadMap from './pages/RoadMap';
-<<<<<<< HEAD
+
 import Navbar from './pages/Navbar';
-=======
-import Navbar from './pages/Navbar'; // Corrected path
->>>>>>> 10a4a97308d6bbf858d11a986c1e9f544668051c
+
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import SettingPage from './pages/SettingPage';
