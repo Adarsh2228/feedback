@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './RegistrationPage.css';
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -38,9 +39,9 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
+    <div className="container">
       <form onSubmit={onSubmit}>
+        <h1>Register</h1>
         <div>
           <label>Username:</label>
           <input type="text" name="username" value={formData.username} onChange={handleChange} required />
